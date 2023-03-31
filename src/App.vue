@@ -44,7 +44,7 @@
                       to="/browse_association"
                   >
                     <v-list-item-title>
-                      <v-icon>mdi-chemical-weapon</v-icon>
+                      <v-icon>mdi-clover</v-icon>
                       &nbsp; Protein
                     </v-list-item-title>
                   </v-list-item>
@@ -110,7 +110,7 @@
                       to="/browse_association"
                   >
                     <v-list-item-title>
-                      <v-icon>mdi-chemical-weapon</v-icon>
+                      <v-icon>mdi-eye-outline</v-icon>
                       &nbsp; Diagnosis
                     </v-list-item-title>
                   </v-list-item>
@@ -118,7 +118,7 @@
                       to="/browse_trait"
                   >
                     <v-list-item-title>
-                      <v-icon>mdi-star-four-points</v-icon>
+                      <v-icon>mdi-cryengine</v-icon>
                       &nbsp; Prognosis
                     </v-list-item-title>
                   </v-list-item>
@@ -127,7 +127,7 @@
                       to="/browse_study"
                   >
                     <v-list-item-title>
-                      <v-icon>mdi-opacity</v-icon>
+                      <v-icon>mdi-eyedropper-variant</v-icon>
                       &nbsp; Drug Response
                     </v-list-item-title>
                   </v-list-item>
@@ -137,7 +137,6 @@
               </v-menu>
 
             </v-tab>
-
 
 
             <v-tab
@@ -175,14 +174,18 @@
                   </v-list-item>
                   <v-divider></v-divider>
 
-                    <div class="mx-1 mt-1 text-body-2 text-center "><v-icon small >mdi-star</v-icon> Featured<v-icon small >mdi-star</v-icon></div>
+                  <div class="mx-1 mt-1 text-body-2 text-center ">
+                    <v-icon small>mdi-star</v-icon>
+                    Featured
+                    <v-icon small>mdi-star</v-icon>
+                  </div>
 
                   <v-list-item
                       to="/browse_trait"
                   >
                     <v-list-item-title>
-                      <v-icon>mdi-star-four-points</v-icon>
-                      &nbsp; Cancers
+                      <v-icon>mdi-zodiac-cancer</v-icon>
+                      &nbsp; Cancer
                     </v-list-item-title>
                   </v-list-item>
                 </v-list>
@@ -191,14 +194,14 @@
             </v-tab>
 
 
-<!--            <v-tab style="text-transform: none">-->
-<!--              <v-icon>mdi-liquid-spot</v-icon>-->
-<!--              Disease-->
-<!--            </v-tab>-->
-<!--            <v-tab style="text-transform: none">-->
-<!--              <v-icon>mdi-human-male-male</v-icon>-->
-<!--              Tissue-->
-<!--            </v-tab>-->
+            <!--            <v-tab style="text-transform: none">-->
+            <!--              <v-icon>mdi-liquid-spot</v-icon>-->
+            <!--              Disease-->
+            <!--            </v-tab>-->
+            <!--            <v-tab style="text-transform: none">-->
+            <!--              <v-icon>mdi-human-male-male</v-icon>-->
+            <!--              Tissue-->
+            <!--            </v-tab>-->
 
 
             <v-tab
@@ -226,11 +229,32 @@
                 <v-list
                     class="text-left"
                 >
+
+
                   <v-list-item
                       to="/browse_association"
                   >
                     <v-list-item-title>
-                      <v-icon>mdi-chemical-weapon</v-icon>
+                      <v-icon>mdi-lungs</v-icon>
+                      &nbsp; All Tissue
+                    </v-list-item-title>
+                  </v-list-item>
+
+                  <v-divider></v-divider>
+
+                  <div class="mx-1 mt-1 text-body-2 text-center ">
+                    <v-icon small>mdi-star</v-icon>
+                    Featured
+                    <v-icon small>mdi-star</v-icon>
+                  </div>
+                  <v-list-item
+
+
+
+                      to="/browse_association"
+                  >
+                    <v-list-item-title>
+                      <v-icon>mdi-water-circle</v-icon>
                       &nbsp; Blood
                     </v-list-item-title>
                   </v-list-item>
@@ -238,7 +262,7 @@
                       to="/browse_trait"
                   >
                     <v-list-item-title>
-                      <v-icon>mdi-star-four-points</v-icon>
+                      <v-icon>mdi-water-opacity</v-icon>
                       &nbsp;
                       Urine
                     </v-list-item-title>
@@ -247,7 +271,6 @@
               </v-menu>
 
             </v-tab>
-
 
 
             <v-divider class="mx-1" inset vertical></v-divider>
@@ -285,9 +308,9 @@
 
     </v-sheet>
 
-    <v-main>
+
       <router-view/>
-    </v-main>
+
     <footer-bar></footer-bar>
   </v-app>
 </template>
