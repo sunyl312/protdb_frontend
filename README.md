@@ -1,4 +1,6 @@
-# protmarker_frontend
+# protmarker
+
+Curated protein biomarker database for disease.
 
 ## Project setup
 ```
