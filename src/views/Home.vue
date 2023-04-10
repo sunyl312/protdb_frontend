@@ -61,15 +61,16 @@
                       class="pa-2"
                   >
                     <v-card-subtitle>Statistics</v-card-subtitle>
-                    <v-row no-gutters>
-                      <v-col v-for='item in statistic_data' cols="12" lg="4" md="4" sm="6" xl="4">
+                    <v-row  no-gutters>
+                      <v-col   v-for='item in statistic_data' cols="12" lg="4" md="4" sm="6" xl="4">
                         <v-hover v-slot="{ hover }">
                           <a href="" style="text-decoration: none">
                             <v-card class="text-center px-1 py-1   " elevation="0" height="100%">
                               <v-sheet :elevation="hover?1:0" :outlined="hover?true:false"
                                        class=" d-flex align-center px-3 "
                                        min-height="150">
-                                <v-sheet :style="{borderBottom: `${$store.state.mainColor1} 2px solid`}" class="mx-auto py-2 "
+                                <v-sheet :style="{borderBottom: `${$store.state.mainColor1} 2px solid`}"
+                                         class="mx-auto py-2 "
                                          width="100%">
                                   <div
                                       class="text-h5"
@@ -82,7 +83,6 @@
 
                                   <div :class="[item.fontsize]"
                                        v-html="item.name"
-
                                   >
 
                                   </div>
@@ -180,51 +180,58 @@ export default {
         {
           to: "/",
           icon: "mdi-information",
-          name: "Protein",
+          name: "Biomarker",
           color: "teal",
-          fontsize: 'text-h6',
+          fontsize: 'text-body-1',
           num: 123
         }, {
           to: "/",
           icon: "mdi-clock",
           name: "Study",
           color: "purple",
-          fontsize: 'text-h6',
+          fontsize: 'text-body-1',
           num: 45
         }, {
           to: "/",
           icon: "mdi-account",
           name: "Trait",
           color: "yellow",
-          fontsize: 'text-h6',
+          fontsize: 'text-body-1',
           num: 553
         }, {
           to: "/",
           icon: "mdi-book",
           name: "Publication",
           color: "teal",
-          fontsize: 'text-h6',
+          fontsize: 'text-body-1',
           num: 123
         }, {
           to: "/",
           icon: "mdi-timer",
-          name: "Disease",
+          name: "Sample",
           color: "pink",
-          fontsize: 'text-h6',
+          fontsize: 'text-body-1',
           num: 225
         }, {
           to: "/",
           icon: "mdi-cloud",
-          name: "Biomarker",
+          name: "Aggregated Term",
           color: "blue",
-          fontsize: 'text-h6',
+          fontsize: 'text-body-2',
           num: 5324
         }, {
           to: "/",
           icon: "mdi-chemical-weapon",
-          name: "Tissue",
+          name: "Disease",
           color: "red",
-          fontsize: 'text-h6',
+          fontsize: 'text-body-1',
+          num: 14435
+        }, {
+          to: "/",
+          icon: "mdi-chemical-weapon",
+          name: "Tissue",
+          color: "red lighten-3",
+          fontsize: 'text-body-1',
           num: 14435
         },
       ]
