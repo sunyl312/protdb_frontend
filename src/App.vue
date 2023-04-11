@@ -14,69 +14,13 @@
               <v-icon>mdi-home</v-icon>
               Home
             </v-tab>
-            <v-divider class="mx-1" inset vertical></v-divider>
+<!--            <v-divider class="mx-1" inset vertical></v-divider>-->
             <v-tab
-                class="px-0"
                 style="text-transform: none"
                 to="/browse"
             >
               <v-icon>mdi-pill-multiple</v-icon>
               Biomarker
-<!--              <v-menu close-delay="400" offset-y open-on-hover>-->
-<!--                <template v-slot:activator="{ on, attrs }">-->
-<!--                  <v-btn-->
-<!--                      id="browseTabID"-->
-<!--                      color="white"-->
-<!--                      elevation="0"-->
-<!--                      height="100%"-->
-<!--                      style="text-transform: none"-->
-<!--                      v-bind="attrs"-->
-<!--                      width="100%"-->
-<!--                      v-on="on"-->
-<!--                  >-->
-<!--                    <v-icon>mdi-pill-multiple</v-icon>-->
-<!--                    Biomarker-->
-<!--                    <v-icon>mdi-menu-down</v-icon>-->
-<!--                  </v-btn>-->
-<!--                </template>-->
-<!--                <v-list-->
-<!--                    class="text-left"-->
-<!--                >-->
-<!--                  <v-list-item-->
-<!--                      to="/browse_association"-->
-<!--                  >-->
-<!--                    <v-list-item-title>-->
-<!--                      <v-icon>mdi-clover</v-icon>-->
-<!--                      &nbsp; Protein-->
-<!--                    </v-list-item-title>-->
-<!--                  </v-list-item>-->
-<!--                  <v-list-item-->
-<!--                      to="/browse_trait"-->
-<!--                  >-->
-<!--                    <v-list-item-title>-->
-<!--                      <v-icon>mdi-star-four-points</v-icon>-->
-<!--                      &nbsp; Trait-->
-<!--                    </v-list-item-title>-->
-<!--                  </v-list-item>-->
-<!--                  <v-list-item-->
-
-<!--                      to="/browse_study"-->
-<!--                  >-->
-<!--                    <v-list-item-title>-->
-<!--                      <v-icon>mdi-opacity</v-icon>-->
-<!--                      &nbsp; Study-->
-<!--                    </v-list-item-title>-->
-<!--                  </v-list-item>-->
-<!--                  <v-list-item-->
-<!--                      to="/browse_publication"-->
-<!--                  >-->
-<!--                    <v-list-item-title>-->
-<!--                      <v-icon>mdi-book</v-icon>-->
-<!--                      &nbsp; Publication-->
-<!--                    </v-list-item-title>-->
-<!--                  </v-list-item>-->
-<!--                </v-list>-->
-<!--              </v-menu>-->
             </v-tab>
             <v-tab
                 class="px-0"
@@ -249,12 +193,12 @@
               <v-icon>mdi-leaf</v-icon>
               Sample
             </v-tab>
-            <v-divider class="mx-1" inset vertical></v-divider>
+<!--            <v-divider class="mx-1" inset vertical></v-divider>-->
             <v-tab style="text-transform: none">
               <v-icon>mdi-webhook</v-icon>
               Knowledge Graph
             </v-tab>
-            <v-divider class="mx-1" inset vertical></v-divider>
+<!--            <v-divider class="mx-1" inset vertical></v-divider>-->
             <v-tab
                 class="px-0"
                 style="text-transform: none"
@@ -309,7 +253,7 @@
                 </v-list>
               </v-menu>
             </v-tab>
-            <v-divider class="mx-1" inset vertical></v-divider>
+<!--            <v-divider class="mx-1" inset vertical></v-divider>-->
             <v-tab style="text-transform: none">
               <v-icon>mdi-chart-line</v-icon>
               Statistic
@@ -318,7 +262,7 @@
               <v-icon>mdi-heart</v-icon>
               Help
             </v-tab>
-            <v-divider class="mx-1" inset vertical></v-divider>
+<!--            <v-divider class="mx-1" inset vertical></v-divider>-->
             <v-tab style="text-transform: none">
               <v-icon>mdi-arrow-top-right-bold-box-outline</v-icon>
               MACdb
