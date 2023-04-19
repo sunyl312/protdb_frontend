@@ -69,7 +69,7 @@
                               <v-sheet :elevation="hover?1:0" :outlined="hover?true:false"
                                        class=" d-flex align-center px-3 "
                                        min-height="150">
-                                <v-sheet :style="{borderBottom: `${$store.state.mainColor1} 2px solid`}"
+                                <v-sheet :style="{borderBottom: `${$store.state.mainColor} 2px solid`}"
                                          class="mx-auto py-2 "
                                          width="100%">
                                   <div
@@ -124,7 +124,27 @@
                   :style="{marginTop: (( $vuetify.breakpoint.name == 'lg' ||  $vuetify.breakpoint.name == 'xl') ? '-80px' : '12px')}"
                   height="300">
                 <v-card-subtitle class="text-center">Tookit</v-card-subtitle>
-                <v-card-text></v-card-text>
+                <v-card-text>
+                  <v-list class="overflow-y-auto overflow-x-hidden" max-height="280">
+
+                    <v-list-item class="align--center" @click="$router.push({name:'knowledgegraph'})">
+                      <v-icon :color="$store.state.mainColor">mdi-state-machine</v-icon> &nbsp; &nbsp;
+                      <div class="black--text font-weight-bold mr-3">Knowledge Graph</div>
+                    </v-list-item>
+
+                    <v-list-item class="align--center" @click="$router.push({name:'tools',query:{subtoolindex:0}})">
+                      <v-icon :color="$store.state.mainColor">mdi-key-variant</v-icon> &nbsp; &nbsp;
+                      <div class="black--text font-weight-bold mr-3">NameToCid</div>
+                    </v-list-item>
+                    <v-list-item class="align--center" @click="$router.push({name:'tools',query:{subtoolindex:1}})">
+                      <v-icon :color="$store.state.mainColor">mdi-chart-timeline</v-icon> &nbsp; &nbsp;
+                      <div class="black--text font-weight-bold mr-3">Enrichment</div>
+                      &nbsp;
+                    </v-list-item>
+
+                  </v-list>
+
+                </v-card-text>
               </v-card>
             </v-col>
             <v-col cols="12" lg="3" md="6" sm="12" xl="3">
@@ -133,7 +153,19 @@
                   height="300">
                 <v-card-subtitle class="text-center">Updates</v-card-subtitle>
                 <v-card-text>
+                  <v-sheet class="overflow-y-auto mx-2" height="220">
+                    <v-timeline align-top  dense>
+                      <v-timeline-item :color="$store.state.mainColor" v-for="(item,idx) in news" :key="idx"  fill-dot icon="mdi-star" small>
+                        <v-row class="mr-2" justify="space-between">
+                          <v-col class="text-left" cols="12">
+                            {{ item.date }} &nbsp;
+                            {{ item.text }}
+                          </v-col>
+                        </v-row>
+                      </v-timeline-item>
 
+                    </v-timeline>
+                  </v-sheet>
                 </v-card-text>
               </v-card>
             </v-col>
@@ -153,7 +185,23 @@
                   :style="{marginTop: (( $vuetify.breakpoint.name == 'lg' ||  $vuetify.breakpoint.name == 'xl') ? '-80px' : '12px') }"
                   height="300">
                 <v-card-subtitle class="text-center">Related Links</v-card-subtitle>
-                <v-card-text></v-card-text>
+                <v-card-text>
+                  <v-list class="overflow-y-auto overflow-x-hidden" max-height="220">
+                    <v-list-item v-for="(item,idx) in relatedlinks" :key="idx" :href="item.href" class="align--center"
+                                 target="_blank">
+                      <v-sheet class="text-left align--center">
+                        <v-icon>mdi-link-variant</v-icon> &nbsp;
+                        <span class="black--text font-weight-bold mr-3" style="white-space: nowrap">{{ item.name }}</span>
+
+                        <img :src="item.logo" height="20" style="display: inline-block;border: 1px solid darkgrey"></img>
+
+                      </v-sheet>
+
+                    </v-list-item>
+
+
+                  </v-list>
+                </v-card-text>
               </v-card>
             </v-col>
           </v-row>
@@ -171,7 +219,52 @@ export default {
   data() {
     return {
       bgurl: require("../assets/img/background8.jpg"),
+      news: [
 
+        {
+          date: "[2023/04/11]",
+          text: "Version 1 was released."
+        },
+      ],
+      relatedlinks: [
+        {
+          href: "https://pubchem.ncbi.nlm.nih.gov/",
+          icon: "mdi-link-variant",
+          name: "PubChem",
+          logo: require('../../public/imgs/related_resource_pubchem.png'),
+        },
+        {
+          href: "https://ngdc.cncb.ac.cn/ccas/#/",
+          icon: "mdi-link-variant",
+          name: "CCAS",
+          logo: require('../../public/imgs/CCASlogo.png'),
+        },
+        {
+          href: "https://ngdc.cncb.ac.cn/ascancer/home",
+          icon: "mdi-link-variant",
+          name: "ASCancer Atlas",
+          logo: require('../../public/imgs/ascancer_atlas.png'),
+        },
+        {
+          href: "https://ngdc.cncb.ac.cn/gsa-human/",
+          icon: "mdi-link-variant",
+          name: "GSA-Human",
+          logo: require('../../public/imgs/gsahuman.png'),
+        },
+        {
+          href: "https://ngdc.cncb.ac.cn/omix/",
+          icon: "mdi-link-variant",
+          name: "OMIX",
+          logo: require('../../public/imgs/omix.png'),
+        },
+        {
+          href: "https://ngdc.cncb.ac.cn/cancerscem/",
+          icon: "mdi-link-variant",
+          name: "CancerSCEM",
+          logo: require('../../public/imgs/cancersem.png'),
+        },
+
+      ]
     }
   },
   computed: {

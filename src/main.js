@@ -7,7 +7,7 @@ import 'xe-utils'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
 import i18n from './i18n'
-
+import commonfunc from "./plugins/commonfunc";
 import zhCN from 'vxe-table/lib/locale/lang/zh-CN'
 import enUS from 'vxe-table/lib/locale/lang/en-US'
 
@@ -24,10 +24,11 @@ router.afterEach((to,from, next) => {
 })
 
 
+Vue.prototype.$commonfunc = commonfunc
 Vue.config.productionTip = false
 window.baseURL = '/protdb';
 Vue.use(VXETable)
-new Vue({
+export default  new Vue({
   router,
   store,
   vuetify,

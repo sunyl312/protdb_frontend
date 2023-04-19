@@ -7,7 +7,15 @@
       <v-row>
         <v-spacer></v-spacer>
         <v-col cols="11">
-          <v-tabs centered>
+          <v-tabs centered
+                  :color="$store.state.mainColor"
+                  v-model="$store.state.currtab"
+                  class="mt-2"
+                  centered
+                  grow
+                  show-arrows
+          >
+<!--            key=0-->
             <v-tab
                 style="text-transform: none"
                 to="/">
@@ -15,6 +23,7 @@
               Home
             </v-tab>
 <!--            <v-divider class="mx-1" inset vertical></v-divider>-->
+            <!--            key=1-->
             <v-tab
                 style="text-transform: none"
                 to="/browse"
@@ -22,6 +31,7 @@
               <v-icon>mdi-pill-multiple</v-icon>
               Biomarker
             </v-tab>
+            <!--            key=2-->
             <v-tab
                 class="px-0"
                 style="text-transform: none"
@@ -76,6 +86,7 @@
                 </v-list>
               </v-menu>
             </v-tab>
+            <!--            key=3-->
             <v-tab
                 class="px-0"
                 style="text-transform: none"
@@ -101,7 +112,8 @@
                     class="text-left"
                 >
                   <v-list-item
-                      to="/browse_association"
+                      to="/disease/all"
+                      @click="changeTabKey(3)"
                   >
                     <v-list-item-title>
                       <v-icon>mdi-chemical-weapon</v-icon>
@@ -127,6 +139,7 @@
                 </v-list>
               </v-menu>
             </v-tab>
+            <!--            key=4-->
             <v-tab
                 class="px-0"
                 style="text-transform: none"
@@ -154,7 +167,8 @@
 
 
                   <v-list-item
-                      to="/browse_association"
+                      to="/tissue/all"
+                      @click="changeTabKey(4)"
                   >
                     <v-list-item-title>
                       <v-icon>mdi-lungs</v-icon>
@@ -273,6 +287,17 @@
       </v-row>
     </v-sheet>
     <router-view/>
+
+    <v-btn :color="$store.state.mainColor2" dark elevation="1" x-small fab style="position: fixed;bottom: 100px;right: 50px;z-index: 99999999"
+           @click="backToTop"  v-if="$route.name != 'home' && $route.name != 'home2'"  ><v-icon small >mdi-format-vertical-align-top</v-icon>
+    </v-btn>
+
+    <v-btn :color="$store.state.mainColor2" dark elevation="1" x-small fab style="position: fixed;bottom: 60px;right: 50px;z-index: 99999999"
+           v-if="$route.name != 'home' && $route.name != 'home2'"  >
+      <citation-download-side-bar></citation-download-side-bar>
+
+    </v-btn>
+    <v-sheet class="my-2"></v-sheet>
     <footer-bar></footer-bar>
   </v-app>
 </template>
@@ -281,12 +306,24 @@
 
 import HeaderBar from "@/views/HeaderBar";
 import FooterBar from "@/views/FooterBar";
-
+import citationDownloadSideBar from "@/components/citationDownloadSideBar";
 export default {
   name: 'App',
-  components: {FooterBar, HeaderBar},
+  components: {FooterBar, HeaderBar,citationDownloadSideBar},
   data: () => ({
     //
   }),
+  methods:{
+    backToTop(){
+      window.scrollTo(0,0)
+    },
+    changeTabKey(key){
+      this.$store.state.currtab = key
+    }
+  },
+  mounted() {
+
+
+  },
 };
 </script>

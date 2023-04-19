@@ -5,8 +5,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    mainColor1:"#A5D6A7",
-    mainColor:"#A5D6A7",
+    mainColor3:"#75D67D",
+    mainColor2:"#A5D6A7",
+    mainColor4:"#2E7D32",
+    mainColor:"#42A5F5",
+    currtab:0,
     chipColors:{
       quality:{
         high:'green',
