@@ -17,49 +17,60 @@
     >
       <vxe-column resizable type="expand" width="50">
         <template #content="{ row, rowIndex }">
+          <v-sheet class="pa-3"  >
+            <v-sheet class="ma-3" color="blue lighten-4" elevation="1">
+              <v-row>
+                <v-spacer></v-spacer>
+                <v-col cols="10">
+                  <vxe-table
+                      :data="Object.values(row.detail)"
+                      border>
+                    <vxe-column resizable type="seq" width="50"></vxe-column>
+                    <vxe-column resizable title="Biomarker Category" width="180px">
+                      <template #default="{row}">
+                        {{ row.Biomarker_category }}
+                      </template>
+                    </vxe-column>
+                    <vxe-column resizable title="#Study" width="180px">
+                      <template #default="{row}">
+                        {{ row.Nstudy }}
+                      </template>
+                    </vxe-column>
+                    <vxe-column field="Nsubject" resizable title="#Subject" width="100px"></vxe-column>
+                    <vxe-column field="quality" resizable title="Quality" width="150px">
+                      <template #default="{row}">
+                        <category-list :color_map="$store.state.chipColors.quality"
+                                       :dat_str_map="row.quality"></category-list>
+                      </template>
+                    </vxe-column>
+                    <vxe-column field="tissue" resizable title="Tissue" width="150px">
+                      <template #default="{row}">
+                        <category-list :dat_str_map="row.tissue"></category-list>
+                      </template>
+                    </vxe-column>
+                    <vxe-column field="trait" resizable title="Trait" width="150px">
+                      <template #default="{row}">
+                        <category-list :dat_str_map="row.trait"></category-list>
+                      </template>
+                    </vxe-column>
+                    <vxe-column field="disease" resizable title="Disease" width="150px">
+                      <template #default="{row}">
+                        <category-list :dat_str_map="row.disease"></category-list>
+                      </template>
+                    </vxe-column>
+                    <vxe-column field="pvalsummary" resizable title="P-value Summary" width="150px">
+                      <template #default="{row}">
+                        <percent-bar-items-pval :dat="row.pvalsummary"></percent-bar-items-pval>
+                      </template>
+                    </vxe-column>
+                  </vxe-table>
+                </v-col>
+                <v-spacer></v-spacer>
+              </v-row>
+            </v-sheet>
 
-          <vxe-table
-              :data="Object.values(row.detail)"
-              border>
-            <vxe-column resizable type="seq" width="50"></vxe-column>
-            <vxe-column resizable title="Biomarker Category" width="180px">
-              <template #default="{row}">
-                {{ row.Biomarker_category }}
-              </template>
-            </vxe-column>
-            <vxe-column resizable title="#Study" width="180px">
-              <template #default="{row}">
-                {{ row.Nstudy }}
-              </template>
-            </vxe-column>
-            <vxe-column field="Nsubject" resizable title="#Subject" width="100px"></vxe-column>
-            <vxe-column field="quality" resizable title="Quality" width="150px">
-              <template #default="{row}">
-                <category-list :color_map="$store.state.chipColors.quality"
-                               :dat_str_map="row.quality"></category-list>
-              </template>
-            </vxe-column>
-            <vxe-column field="tissue" resizable title="Tissue" width="150px">
-              <template #default="{row}">
-                <category-list :dat_str_map="row.tissue"></category-list>
-              </template>
-            </vxe-column>
-            <vxe-column field="trait" resizable title="Trait" width="150px">
-              <template #default="{row}">
-                <category-list :dat_str_map="row.trait"></category-list>
-              </template>
-            </vxe-column>
-            <vxe-column field="disease" resizable title="Disease" width="150px">
-              <template #default="{row}">
-                <category-list :dat_str_map="row.disease"></category-list>
-              </template>
-            </vxe-column>
-            <vxe-column field="pvalsummary" resizable title="P-value Summary" width="150px">
-              <template #default="{row}">
-                <percent-bar-items-pval :dat="row.pvalsummary"></percent-bar-items-pval>
-              </template>
-            </vxe-column>
-          </vxe-table>
+
+          </v-sheet>
         </template>
       </vxe-column>
       <vxe-column field="std_Uniprot_ID" resizable title="Protein ID" width="150px">
@@ -88,6 +99,11 @@
         <template #default="{row}">
           <category-list :color_map="$store.state.chipColors.quality"
                          :dat_str_map="row.quality"></category-list>
+        </template>
+      </vxe-column>
+      <vxe-column field="std_Uniprot_ID" resizable title="Aggregate Database Rating" width="150px">
+        <template #default="{row}">
+          <aggr-db-indicator :key="row.std_Uniprot_ID" :uniprot_id="row.std_Uniprot_ID" ></aggr-db-indicator>
         </template>
       </vxe-column>
       <vxe-column field="tissue" resizable title="Tissue" width="150px">
@@ -119,8 +135,9 @@
 <script>
 import PercentBarItemsPval from "@/components/percentBarItemsPval";
 import CategoryList from "@/components/categoryList";
+import AggrDbIndicator from "@/components/aggrDbIndicator";
 export default {
-  components: {CategoryList, PercentBarItemsPval},
+  components: {AggrDbIndicator, CategoryList, PercentBarItemsPval},
   name: "browseProteinTable",
   props:['protein'],
   created() {

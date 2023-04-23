@@ -8,6 +8,9 @@ import BrowseDetailTrait from "@/views/BrowseDetailTrait";
 import BrowseDetailPublication from "@/views/BrowseDetailPublication";
 import DiseaseAll from "@/views/DiseaseAll";
 import TissueAll from "@/views/TissueAll";
+import Statistics from "@/views/Statistics";
+import store from "../store"
+import statistics from "@/views/Statistics";
 Vue.use(VueRouter)
 
 const routes = [
@@ -42,14 +45,27 @@ const routes = [
     component: BrowseDetailPublication
   },
   {
+    path: '/statistic',
+    name: 'Statistics',
+    component: Statistics
+  },
+  {
     path: '/disease/all',
     name: 'disease_all',
-    component: DiseaseAll
+    component: DiseaseAll,
+    beforeEnter: (to, from,next) => {
+      store.state.currtab=3;
+      next();
+    },
   },
   {
     path: '/tissue/all',
     name: 'tissue_all',
-    component: TissueAll
+    component: TissueAll,
+    beforeEnter: (to, from,next) => {
+      store.state.currtab=4;
+      next();
+    },
   }
 ]
 

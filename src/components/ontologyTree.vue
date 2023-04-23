@@ -16,7 +16,7 @@
           <v-icon>mdi-reset</v-icon>
           Collapse All
         </v-btn>
-        <v-btn @click="resetall" :color="$store.state.mainColor" dark small style="text-transform: none">
+        <v-btn class="mx-1"  @click="resetall" :color="$store.state.mainColor" dark small style="text-transform: none">
           <v-icon>mdi-reset</v-icon>
           Reset
         </v-btn>
@@ -87,7 +87,7 @@
           <v-icon>mdi-reset</v-icon>
           Collapse All
         </v-btn>
-        <v-btn @click="resetall" :color="$store.state.mainColor" dark small style="text-transform: none">
+        <v-btn class="mx-1" @click="resetall" :color="$store.state.mainColor" dark small style="text-transform: none">
           <v-icon>mdi-reset</v-icon>
           Reset
         </v-btn>

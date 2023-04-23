@@ -268,7 +268,7 @@
               </v-menu>
             </v-tab>
 <!--            <v-divider class="mx-1" inset vertical></v-divider>-->
-            <v-tab style="text-transform: none">
+            <v-tab to="/statistic" style="text-transform: none">
               <v-icon>mdi-chart-line</v-icon>
               Statistic
             </v-tab>
