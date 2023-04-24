@@ -24,7 +24,45 @@ function pagination(src_table, current_page, page_size) {
 
 }
 
+function openAtNewPageTraitDetail(traitid){
+  const {href} = VueThis.$router.resolve({
+    path: `/browse/trait/${traitid}`
+  });
+  window.open(href, '_blank');
+}
+
+function openAtNewPageProteinDetail(cid){
+  const {href} = VueThis.$router.resolve({
+    path: `/browse/protein/${cid}`
+  });
+  window.open(href, '_blank');
+}
+
+function openAtNewPageStudyDetail(studyid){
+  const {href} = VueThis.$router.resolve({
+    path: `/browse/study/${studyid}`
+  });
+  window.open(href, '_blank');
+}
+
+function openAtNewPagePublicationDetail(pmid){
+  const {href} = VueThis.$router.resolve({
+    path: `/browse/publication/${pmid}`
+  });
+  window.open(href, '_blank');
+}
+
+function goOuterLink(t){
+  window.open( t, '_blank')
+}
+
+
 export default {
   openDetailAtNewPage,
   pagination,
+  openAtNewPageTraitDetail,
+  openAtNewPageProteinDetail,
+  openAtNewPageStudyDetail,
+  openAtNewPagePublicationDetail,
+  goOuterLink,
 }

@@ -77,7 +77,7 @@ export default {
         this.dat = data
 
         this.changeRating();
-        console.log(this.len,this.rating)
+        // console.log(this.len,this.rating)
         this.isLoading = false;
       }).catch(err => {
         this.isLoading = false;

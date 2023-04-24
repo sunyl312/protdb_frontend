@@ -17,7 +17,7 @@ import { BarChart } from 'echarts/charts';
 import { HeatmapChart } from 'echarts/charts';
 import { GraphChart } from 'echarts/charts';
 import { ScatterChart } from 'echarts/charts';
-
+import { BoxplotChart } from 'echarts/charts';
 
 
 echarts.use([
@@ -38,7 +38,7 @@ echarts.use([
   TitleComponent,
   VisualMapComponent,
   HeatmapChart,
-
+  BoxplotChart,
 ]);
 
 export default echarts;

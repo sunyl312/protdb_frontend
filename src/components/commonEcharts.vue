@@ -1,9 +1,10 @@
 <template>
-  <div ref="echart" style="width:100%;height:500px;"></div>
+  <div  :id="chartid" ref="echart" :style="{width:'100%',height: chartHeight+'px'}"></div>
 </template>
 
 <script>
 
+import _ from 'lodash'
 export default {
   name: "commonEcharts",
   props: {
@@ -11,19 +12,33 @@ export default {
       type: Object,
       default: () => {
       }
-    }
+    },
+    chartHeight:{
+      type:Number,
+      default: 500
+    },
+    // clickFun:{
+    //   default:null,
+    // },
   },
   data() {
     return {
       count: 1,
+      chartid:null,
     }
   },
+  beforeCreate() {
+    this.chartid = _.uniqueId();
+  },
   mounted() {
-    const vm = this
-    vm.$nextTick(() => {
-      vm.drawChart()
-    });
-
+    this.drawChart();
+  },
+  watch: {
+    chartOption: {
+      handler: function () {
+        this.drawChart();
+      }
+    },
   },
   methods: {
     /*
@@ -32,12 +47,25 @@ export default {
     */
     drawChart() {
       let that = this
-      that.myChart = this.$echarts.init(
-          this.$refs.echart
-      );
-      this.chartOption && that.myChart.setOption(this.chartOption);
+      // let chartDom = document.getElementById(this.chartid);
+      // let myChart = this.$echarts.init(chartDom);
 
-      this.chartOption && window.addEventListener("resize", () => {
+      that.myChart =  this.$echarts.init(
+          this.$refs.echart,'light'
+      );
+
+      // let chartDom = document.getElementById(this.chartid);
+      // that.myChart = this.$echarts.init(
+      //     chartDom,
+      // );
+
+      this.chartOption &&  that.myChart.setOption(this.chartOption);
+
+      if(  this.chartOption && this.chartOption.zxcCallback || false){
+        that.myChart.on('click',this.chartOption.zxcCallback);
+      }
+      // 第六步，执行echarts自带的resize方法，即可做到让echarts图表自适应
+      window.addEventListener("resize", () => {
         // 第六步，执行echarts自带的resize方法，即可做到让echarts图表自适应
         that.myChart.resize();
         // 如果有多个echarts，就在这里执行多个echarts实例的resize方法,不过一般要做组件化开发，即一个.vue文件只会放置一个echarts实例

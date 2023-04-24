@@ -11,7 +11,7 @@ import commonfunc from "./plugins/commonfunc";
 // import zhCN from 'vxe-table/lib/locale/lang/zh-CN'
 // import enUS from 'vxe-table/lib/locale/lang/en-US'
 import echarts from './plugins/echarts'
-
+// import _ from 'lodash'
 
 VXETable.setup({
   // 对组件内置的提示语进行国际化翻译
@@ -27,7 +27,8 @@ router.afterEach((to,from, next) => {
 
 
 Vue.prototype.$commonfunc = commonfunc
-Vue.prototype.$echarts = echarts
+Vue.prototype.$echarts = echarts;
+// Vue.prototype.$_ = _;/**/
 Vue.config.productionTip = false
 window.baseURL = '/protdb';
 Vue.use(VXETable)
