@@ -1,5 +1,5 @@
 import VueThis from '../main'
-
+import _ from 'lodash'
 function openDetailAtNewPage(cid, parent_uri) {
   const {href} = VueThis.$router.resolve({
     path: `/${parent_uri}/${cid}`
@@ -56,6 +56,11 @@ function goOuterLink(t){
   window.open( t, '_blank')
 }
 
+function capitalize(x){
+
+  return _.capitalize(x)
+}
+
 
 export default {
   openDetailAtNewPage,
@@ -65,4 +70,5 @@ export default {
   openAtNewPageStudyDetail,
   openAtNewPagePublicationDetail,
   goOuterLink,
+  capitalize,
 }

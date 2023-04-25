@@ -1,9 +1,16 @@
 <template>
-  <v-expansion-panels v-model="expandPanels1"  style="z-index: auto;"  accordion class="my-4" >
+  <v-expansion-panels v-model="expandToggle" flat   accordion class="my-4" style="z-index: auto;">
     <v-expansion-panel
-
     >
-      <v-expansion-panel-header class="font-weight-bold" expand-icon="" @click="isexpand = !isexpand" > <span>{{titleName}} <v-icon left v-show="isexpand" >mdi-chevron-double-up</v-icon> <v-icon left v-show="!isexpand" >mdi-chevron-double-down</v-icon> </span></v-expansion-panel-header>
+      <v-expansion-panel-header class="font-weight-bold" expand-icon="" @click="isexpand = !isexpand">
+        <span>
+          <slot name="title">
+            {{titleName}}
+          </slot>
+          <v-icon v-show="isexpand" left >mdi-chevron-double-up</v-icon>
+          <v-icon v-show="!isexpand" left >mdi-chevron-double-down</v-icon>
+        </span>
+      </v-expansion-panel-header>
       <v-expansion-panel-content>
         <slot></slot>
       </v-expansion-panel-content>
@@ -13,14 +20,38 @@
 
 <script>
 export default {
-name: "expandPanel",
-  props:['titleName'],
-  data(){
-  return{
-    isexpand:true,
-    expandPanels1:0
+  name: "expandPanel",
+  props: {
+    titleName: {},
+    expand_at_start: {
+      default: true
+    },
+
+  },
+  data() {
+    return {
+      isexpand:false,
+      // expand_at_start:false,
+      expandToggle:0,
+    }
+  },
+  created() {
+    this.changeExpand();
+  },
+  watch:{
+    expand_at_start(){
+      this.changeExpand();
+    }
+  },
+  methods:{
+    changeExpand(){
+      if (this.expand_at_start){
+        this.expandToggle =  0
+      }else{
+        this.expandToggle = undefined
+      }
+    }
   }
-}
 }
 </script>
 

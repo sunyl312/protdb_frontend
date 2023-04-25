@@ -10,10 +10,11 @@
             <v-col cols="6" lg="6" md="12" sm="12" xl="6">
               <v-card outlined>
                 <v-card-subtitle class="font-weight-bold">
-                  Test Genome Browser
+                  3D mol
                 </v-card-subtitle>
                 <v-card-text>
-                  <visualize-genome-browser :ensembl_id="'ENSG00000094914'" ></visualize-genome-browser>
+<!--                  <component   src="https://3Dmol.org/build/3Dmol-min.js" async ></component>-->
+                  <div style="height: 400px; width: 400px; position: relative;" class='viewer_3Dmoljs' data-pdb='2POR' data-backgroundcolor='0xffffff' data-style='stick' ></div>
                 </v-card-text>
               </v-card>
             </v-col>

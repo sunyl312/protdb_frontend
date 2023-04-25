@@ -72,7 +72,7 @@ export default {
       * 注意这些包一般都需要一个div作为挂载点，参考下边的方式来写不会报错。
       *
       * */
-      console.log(this.chr,this.start,this.end)
+      // console.log(this.chr,this.start,this.end)
     this.bbb =   new Browser({
         pageName: this.this_id,
         chr: ""+this.chr,

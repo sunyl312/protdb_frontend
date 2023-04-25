@@ -1,5 +1,16 @@
 <template>
   <div>
+    <expand-panel  :expand_at_start="false" title-name="Help">
+      <template #title>
+        <v-icon small :color="$store.state.mainColor" >mdi-heart</v-icon>  Help
+      </template>
+      <v-sheet outlined rounded class=" px-3 py-6">
+        <legend-pval-summary></legend-pval-summary>
+        <legend-category-cards name="Biomarker Category" :color-map="$store.state.chipColors.biomarker_category" ></legend-category-cards>
+        <legend-category-cards name="Quality" :color-map="$store.state.chipColors.quality" ></legend-category-cards>
+        <legend-hint-hidden-table-columns></legend-hint-hidden-table-columns>
+      </v-sheet>
+    </expand-panel>
     <vxe-toolbar custom export></vxe-toolbar>
     <slot name="header"></slot>
     <vxe-table
@@ -43,15 +54,17 @@
                <span><v-icon :color="$store.state.mainColor" small>mdi-share</v-icon></span>
               </v-sheet>
             </template>
-            <v-sheet outlined rounded class="pa-3">
+            <v-sheet class="pa-3" outlined rounded>
                 <v-row>
                   <v-col cols="12">
-                    <v-btn  elevation="0" style="text-transform: none" class="text-body-2" @click="$commonfunc.goOuterLink('https://alphafold.ebi.ac.uk/entry/'+row.std_Uniprot_ID)">
+                    <v-btn class="text-body-2" elevation="0" style="text-transform: none"
+                           @click="$commonfunc.goOuterLink('https://alphafold.ebi.ac.uk/entry/'+row.std_Uniprot_ID)">
                       <v-icon :color="$store.state.mainColor" small>mdi-alpha</v-icon>Alpha Fold
                     </v-btn>
 
-                    <v-btn  elevation="0" style="text-transform: none" class="text-body-2" @click="$commonfunc.goOuterLink('https://www.uniprot.org/uniprotkb/'+row.std_Uniprot_ID+'/entry')">
-                      <v-icon  :color="$store.state.mainColor" > mdi-alpha-p</v-icon>Uniprot
+                    <v-btn class="text-body-2" elevation="0" style="text-transform: none"
+                           @click="$commonfunc.goOuterLink('https://www.uniprot.org/uniprotkb/'+row.std_Uniprot_ID+'/entry')">
+                      <v-icon :color="$store.state.mainColor"> mdi-alpha-p</v-icon>Uniprot
                     </v-btn>
                   </v-col>
                 </v-row>
@@ -88,17 +101,17 @@
       </vxe-column>
       <vxe-column field="tissue" resizable title="Tissue" width="150px">
         <template #default="{row}">
-          <category-list :dat_str_map="row.tissue"></category-list>
+          <category-list :dat_str_map="row.tissue" :max_number_show="5"></category-list>
         </template>
       </vxe-column>
       <vxe-column field="trait" resizable title="Trait" width="150px">
         <template #default="{row}">
-          <category-list :dat_str_map="row.trait"></category-list>
+          <category-list :dat_str_map="row.trait" :max_number_show="5"></category-list>
         </template>
       </vxe-column>
       <vxe-column field="disease" resizable title="Disease" width="150px">
         <template #default="{row}">
-          <category-list :dat_str_map="row.disease"></category-list>
+          <category-list :dat_str_map="row.disease" :max_number_show="5"></category-list>
         </template>
       </vxe-column>
       <vxe-column field="pvalsummary" resizable title="P-value Summary" width="150px">
@@ -119,9 +132,17 @@ import AggrDbIndicator from "@/components/aggrDbIndicator";
 import AggrDatasetPlot from "@/components/aggrDatasetPlot";
 import AggrDatasetAll from "@/components/aggrDatasetAll";
 import BrowseProteinTableExpanded from "@/components/browseProteinTableExpanded";
+import ExpandPanel from "@/components/expandPanel";
+import LegendPvalSummary from "@/components/helper/LegendPvalSummary";
+import LegendCategoryCards from "@/components/helper/LegendCategoryCards";
+import LegendHintHiddenTableColumns from "@/components/helper/LegendHintHiddenTableColumns";
 
 export default {
   components: {
+    LegendHintHiddenTableColumns,
+    LegendCategoryCards,
+    LegendPvalSummary,
+    ExpandPanel,
     BrowseProteinTableExpanded,
     AggrDatasetAll, AggrDatasetPlot, AggrDbIndicator, CategoryList, PercentBarItemsPval
   },
