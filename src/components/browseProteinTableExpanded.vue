@@ -9,7 +9,7 @@
     <v-tab-item>
       <v-sheet class="my-3">
         <vxe-table
-            :data="Object.values(row.detail)"
+            :data="Object.values(row.detail).filter(item=>{return item.Nstudy > 0})"
             border>
           <vxe-column resizable type="seq" width="50"></vxe-column>
           <vxe-column resizable title="Biomarker Category" width="180px">

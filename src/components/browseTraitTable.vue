@@ -29,8 +29,11 @@
       <vxe-column resizable type="expand" width="50">
         <template #content="{ row, rowIndex }">
 
+          <v-sheet class="pa-3" color="blue lighten-4">
+            <v-sheet class="ma-3 pa-3" elevation="1" rounded>
+
           <vxe-table
-              :data="Object.values(row.detail)"
+              :data="Object.values(row.detail).filter(item=>{return item.Nstudy > 0})"
               border>
             <vxe-column resizable type="seq" width="50"></vxe-column>
             <vxe-column resizable title="Biomarker Category" width="180px">
@@ -38,9 +41,9 @@
                 {{ row.Biomarker_category }}
               </template>
             </vxe-column>
-            <vxe-column field="protein" resizable title="Protein" width="150px">
+            <vxe-column field="protein" resizable title="Protein" min-width="250px">
               <template #default="{row}">
-                <category-list :dat_str_map="row.protein"></category-list>
+                <category-list :dat_str_map="row.protein" :max_number_show="10" ></category-list>
               </template>
             </vxe-column>
             <vxe-column resizable title="#Study" width="180px">
@@ -71,6 +74,9 @@
               </template>
             </vxe-column>
           </vxe-table>
+
+            </v-sheet>
+          </v-sheet>
         </template>
       </vxe-column>
       <vxe-column field="Trait_ontology_name" resizable title="Trait" width="150px">

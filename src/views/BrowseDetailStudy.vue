@@ -5,87 +5,86 @@
       <v-col cols="12">
         <v-card>
           <expand-panel :title-name="this_id">
-            <!--          <v-row>-->
-            <!--            <v-col cols="6">-->
-            <!--              <detail-page-block>-->
-            <!--                <template #name>-->
-            <!--                  Uniprot Eetry:-->
-            <!--                </template>-->
-            <!--                <template #content>-->
-            <!--                  {{ detail.Entry_Name }}-->
-            <!--                </template>-->
-            <!--              </detail-page-block>-->
-            <!--              <detail-page-block>-->
-            <!--                <template #name>-->
-            <!--                  Protein Names:-->
-            <!--                </template>-->
-            <!--                <template #content>-->
-            <!--                  {{ detail.Protein_names }}-->
-            <!--                </template>-->
-            <!--              </detail-page-block>-->
-            <!--              <detail-page-block>-->
-            <!--                <template #name>-->
-            <!--                  Gene Name:-->
-            <!--                </template>-->
-            <!--                <template #content>-->
-            <!--                  {{ detail.Gene_Names_primary }}-->
-            <!--                </template>-->
-            <!--              </detail-page-block>-->
-            <!--              <detail-page-block>-->
-            <!--                <template #name>-->
-            <!--                  Length:-->
-            <!--                </template>-->
-            <!--                <template #content>-->
-            <!--                  {{ detail.Length }}-->
-            <!--                </template>-->
-            <!--              </detail-page-block>-->
-            <!--              <detail-page-block>-->
-            <!--                <template #name>-->
-            <!--                  Mass:-->
-            <!--                </template>-->
-            <!--                <template #content>-->
-            <!--                  {{ detail.Mass }}-->
-            <!--                </template>-->
-            <!--              </detail-page-block>-->
-            <!--            </v-col>-->
-            <!--            <v-col cols="6">-->
-            <!--              <detail-page-block align="start"  min-height="250" text-align="text-justify" outlined="true" rounded="true">-->
-            <!--                <template #name>-->
-            <!--                  Interacts With:-->
-            <!--                </template>-->
-            <!--                <template #content>-->
-            <!--                  <v-card class="ma-2 pa-2" v-for="item in detail && detail.Interacts_with && detail.Interacts_with.split(/; /).filter(x=> x.length >0) || []">-->
-            <!--                    {{ item}}-->
-            <!--                  </v-card>-->
-            <!--                </template>-->
-            <!--              </detail-page-block>-->
-            <!--            </v-col>-->
-            <!--            <v-col cols="6">-->
-            <!--              <detail-page-block align="start" min-height="250"  left-col="2" right-col="10" text-align="text-justify" :outlined="true" :rounded="true">-->
-            <!--                <template #name>-->
-            <!--                  Function:-->
-            <!--                </template>-->
-            <!--                <template #content>-->
-            <!--                  <v-card class="ma-2 pa-2" v-for="item in detail && detail.Function_CC && detail.Function_CC.split(/FUNCTION:/).filter(x=> x.length >0) || []">-->
-            <!--                    {{ item}}-->
-            <!--                  </v-card>-->
-            <!--                </template>-->
-            <!--              </detail-page-block>-->
-            <!--            </v-col>-->
-            <!--            <v-col cols="6">-->
-            <!--              <detail-page-block align="start" min-height="250"   left-col="2" right-col="10" text-align="text-justify" :outlined="true" :rounded="true">-->
-            <!--                <template #name>-->
-            <!--                  Subunit Structure:-->
-            <!--                </template>-->
-            <!--                <template #content>-->
-            <!--                  <v-card class="ma-2 pa-2" v-for="item in detail && detail.Subunit_structure && detail.Subunit_structure.split(/SUBUNIT:/).filter(x=> x.length >0) || []">-->
-            <!--                    {{ item}}-->
-            <!--                  </v-card>-->
-            <!--                </template>-->
-            <!--              </detail-page-block>-->
-            <!--            </v-col>-->
-            <!--          </v-row>-->
-            <!--          {{ this.detail }}-->
+            <v-row align="center">
+              <v-col cols="12">
+                <div class="text-h4 font-weight-bold text-left">{{ detailed_clean.Study_id || "" }}</div>
+              </v-col>
+              <v-spacer></v-spacer>
+            </v-row>
+
+            <v-row>
+              <v-col cols="6">
+                <v-row>
+                  <v-col cols="4">
+                    <span class="text-body-1 font-weight-bold " >Disease:</span> <span>{{detailed_clean.disease_subtype}} </span>
+                  </v-col>
+                  <v-col cols="4">
+                    <span class="text-body-1 font-weight-bold " >Trait:</span> <span>{{detailed_clean.Trait_ontology_name}} </span>
+                  </v-col>
+                  <v-col cols="4">
+                    <span class="text-body-1 font-weight-bold " >Tissue:</span> <span>{{detailed_clean.Tissue}} </span>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col cols="4">
+                    <span class="text-body-1 font-weight-bold " >#Subject:</span> <span>{{detailed_clean.Nsubject}} </span>
+                  </v-col>
+                  <v-col cols="4">
+                    <span class="text-body-1 font-weight-bold " >#Protein:</span> <span>{{Object.keys(detailed_clean.protein).length}} </span>
+                  </v-col>
+                  <v-col cols="4">
+                    <span class="text-body-1 font-weight-bold " >Method:</span> <span>{{detailed_clean.Assay_or_Technique}} </span>
+                  </v-col>
+                  <v-col cols="4">
+                    <span class="text-body-1 font-weight-bold " >Quality:</span> <span>{{detailed_clean.Quality}} </span>
+                  </v-col>
+                  <v-col cols="4">
+                    <span class="text-body-1 font-weight-bold " >PMID:</span> <span>{{detailed_clean.PMID}} </span>
+                  </v-col>
+
+
+                  <v-col cols="8">
+                    <span class="text-body-1 font-weight-bold " >Condition:</span> <span>{{detailed_clean.Condition}} </span>
+                  </v-col>
+                </v-row>
+              </v-col>
+              <v-col cols="6">
+                <v-sheet outlined rounded >
+                  <v-simple-table>
+                    <thead>
+                    <tr class="text-body-1 font-weight-bold">
+                      <th>Group</th>
+                      <th>Name</th>
+                      <th>Age</th>
+                      <th>Sex</th>
+                      <th>Size</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>Case</td>
+                      <td>{{detailed_clean.case_info.name}}</td>
+                      <td>{{detailed_clean.case_info.age}}</td>
+                      <td><sex-chip :sex="detailed_clean.case_info.sex"></sex-chip></td>
+                      <td>{{detailed_clean.case_info.size}}</td>
+                    </tr>
+                    <tr>
+
+                      <td>Control</td>
+                      <td>{{detailed_clean.control_info.name}}</td>
+                      <td>{{detailed_clean.control_info.age}}</td>
+                      <td><sex-chip :sex="detailed_clean.control_info.sex"></sex-chip></td>
+                      <td>{{detailed_clean.control_info.size}}</td>
+                    </tr>
+
+                    </tbody>
+                  </v-simple-table>
+                </v-sheet>
+
+              </v-col>
+            </v-row>
+
+
           </expand-panel>
         </v-card>
       </v-col>
@@ -198,10 +197,12 @@ import BrowseStudyTable from "@/components/browseStudyTable";
 import BrowsePublicationTable from "@/components/browsePublicationTable";
 import BrowseTraitTable from "@/components/browseTraitTable";
 import DetailPageBlock from "@/components/detailPageBlock";
+import SexChip from "@/components/helper/sexChip";
 
 export default {
   name: "BrowseDetailStudy",
   components: {
+    SexChip,
     DetailPageBlock,
     BrowseTraitTable, BrowsePublicationTable, BrowseStudyTable, BrowseProteinTable, ExpandPanel, BreadCrumb
   },
@@ -267,6 +268,15 @@ export default {
   },
   mounted() {
     this.loadData();
+  },
+  computed: {
+    detailed_clean() {
+      if (this.detail == null) {
+        return {}
+      } else {
+        return this.detail[0]
+      }
+    }
   },
   methods: {
     loadData() {

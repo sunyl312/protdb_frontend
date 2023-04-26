@@ -5,9 +5,10 @@
       <v-row no-gutters>
         <v-spacer></v-spacer>
         <v-col class="" cols="11">
-          <div style="display: flex;flex-display:column; align-items: center;height: 100px">
-            <h1 class="black--text lighten-1 font-weight-bold">Protdb: curated protein biomarker in disease</h1>
-          </div>
+          <v-sheet min-height="100" class="d-flex flex-row justify-start align-center z-transparent" >
+            <img  height="60" class="ma-3" width="60" src="../assets/logo.png" ></img>
+            <h1   style="display: inline-block" class=" black--text lighten-1 font-weight-bold"> Protdb: curated protein biomarker in disease</h1>
+          </v-sheet>
           <v-card class="pa-8">
             <v-row>
               <v-col cols="12" lg="8" md="8" sm="12" xl="8">
@@ -343,5 +344,10 @@ export default {
 </script>
 
 <style scoped>
+.z-transparent {
+  background-color: transparent !important;
+  opacity: 2;
+  border-color: transparent !important;
+}
 
 </style>

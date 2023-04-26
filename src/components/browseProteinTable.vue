@@ -8,7 +8,9 @@
         <legend-pval-summary></legend-pval-summary>
         <legend-category-cards name="Biomarker Category" :color-map="$store.state.chipColors.biomarker_category" ></legend-category-cards>
         <legend-category-cards name="Quality" :color-map="$store.state.chipColors.quality" ></legend-category-cards>
+
         <legend-hint-hidden-table-columns></legend-hint-hidden-table-columns>
+
       </v-sheet>
     </expand-panel>
     <vxe-toolbar custom export></vxe-toolbar>
@@ -136,9 +138,11 @@ import ExpandPanel from "@/components/expandPanel";
 import LegendPvalSummary from "@/components/helper/LegendPvalSummary";
 import LegendCategoryCards from "@/components/helper/LegendCategoryCards";
 import LegendHintHiddenTableColumns from "@/components/helper/LegendHintHiddenTableColumns";
+import LegendSex from "@/components/helper/LegendSex";
 
 export default {
   components: {
+    LegendSex,
     LegendHintHiddenTableColumns,
     LegendCategoryCards,
     LegendPvalSummary,

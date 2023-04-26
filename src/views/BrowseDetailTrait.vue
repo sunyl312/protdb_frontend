@@ -5,6 +5,40 @@
       <v-col cols="12">
         <v-card>
           <expand-panel :title-name="this_id">
+            <v-row align="center">
+              <v-col cols="5" >
+                <div class="text-h4 font-weight-bold text-left">{{detailed_clean.Trait_ontology_name || ""}}</div>
+              </v-col>
+            </v-row>
+
+            <v-row>
+              <v-col cols="2">
+                <span class="text-body-1 font-weight-bold " >Trait Ontology ID:</span> <span>{{detailed_clean.Trait_ontology_id}} </span>
+              </v-col>
+              <v-col cols="2">
+                <span class="text-body-1 font-weight-bold " >Trait Type:</span> <span>{{detailed_clean.Trait_type}} </span>
+              </v-col>
+              <v-col cols="4">
+                <span class="text-body-1 font-weight-bold " >Tissue:</span> <span> <category-list style="display: inline-block" :dat_str_map="detailed_clean.tissue"></category-list> </span>
+              </v-col>
+            </v-row>
+
+            <v-row>
+              <v-col cols="2">
+                <span class="text-body-1 font-weight-bold " >#Protein:</span> <span>{{Object.keys(detailed_clean.protein).length}} </span>
+              </v-col>
+              <v-col cols="2">
+                <span class="text-body-1 font-weight-bold " >#Study:</span> <span>{{detailed_clean.Nstudy}} </span>
+              </v-col>
+              <v-col cols="2">
+                <span class="text-body-1 font-weight-bold " >#Subject:</span> <span> {{detailed_clean.Nsubject}}</span>
+              </v-col>
+              <v-col cols="2">
+              <span class="text-body-1 font-weight-bold " >#Publication:</span> <span>{{Object.keys(detailed_clean.protein).length}} </span>
+            </v-col>
+
+            </v-row>
+
           </expand-panel>
         </v-card>
       </v-col>
@@ -113,10 +147,12 @@ import BrowseStudyTable from "@/components/browseStudyTable";
 import BrowsePublicationTable from "@/components/browsePublicationTable";
 import BrowseTraitTable from "@/components/browseTraitTable";
 import DetailPageBlock from "@/components/detailPageBlock";
+import CategoryList from "@/components/categoryList";
 
 export default {
   name: "BrowseDetailTrait",
   components: {
+    CategoryList,
     DetailPageBlock,
     BrowseTraitTable, BrowsePublicationTable, BrowseStudyTable, BrowseProteinTable, ExpandPanel, BreadCrumb
   },
@@ -182,6 +218,15 @@ export default {
   },
   mounted() {
     this.loadData();
+  },
+  computed: {
+    detailed_clean() {
+      if (this.detail == null) {
+        return {}
+      } else {
+        return this.detail[0]
+      }
+    }
   },
   methods: {
     loadData() {

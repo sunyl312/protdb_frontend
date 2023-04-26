@@ -5,7 +5,65 @@
       <v-col cols="12">
         <v-card>
           <expand-panel :title-name="this_id">
+            <v-row align="center">
+              <v-col cols="12"  class="ml-6">
+                <div class="text-h5 font-weight-bold text-left">{{detailed_clean.Title || ""}}</div>
+              </v-col>
 
+              <v-spacer></v-spacer>
+            </v-row>
+            <v-row>
+              <v-col cols="2"  class="text-left">
+                <span class="text-body-1 font-weight-bold " >PubMed ID:</span> <span> {{detailed_clean.PMID}}  </span> <v-icon color="blue" small @click="$commonfunc.goOuterLinkPubmed(detailed_clean.PMID)">mdi-share</v-icon>
+              </v-col>
+              <v-col cols="2"  class="text-left">
+                <span class="text-body-1 font-weight-bold " >Journal:</span> <span> {{detailed_clean.Journal_Title}}  </span>
+              </v-col>
+              <v-col cols="1"  class="text-left">
+                <span class="text-body-1 font-weight-bold " >Volume:</span> <span> {{detailed_clean.publish_info.vol}}  </span>
+              </v-col>
+              <v-col cols="1"  class="text-left">
+                <span class="text-body-1 font-weight-bold " >Issue:</span> <span> {{detailed_clean.publish_info.issue}}  </span>
+              </v-col>
+              <v-col cols="1"  class="text-left">
+                <span class="text-body-1 font-weight-bold " >Pages:</span> <span> {{detailed_clean.publish_info.page}}  </span>
+              </v-col>
+              <v-col cols="2"  class="text-left">
+                <span class="text-body-1 font-weight-bold " >Date:</span> <span> {{detailed_clean.publish_info.date}}  </span>
+              </v-col>
+            </v-row>
+
+            <v-row>
+              <v-col cols="12" >
+                <v-sheet  class="text-left" ><span class="text-body-1 font-weight-bold " >Authors:</span></v-sheet>
+                <v-sheet class="text-body-2 text-justify" >{{ detailed_clean.Authors_Full_Name && detailed_clean.Authors_Full_Name.split("||").join("; ") || ""}}</v-sheet>
+              </v-col>
+            </v-row>
+
+            <v-row>
+              <v-col cols="12" >
+                <v-sheet  class="text-left" ><span class="text-body-1 font-weight-bold " >Abstract:</span></v-sheet>
+                <v-sheet class="text-body-2 text-justify" >{{detailed_clean.Abstract}}</v-sheet>
+              </v-col>
+            </v-row>
+<!--            <v-row>-->
+<!--              <v-col cols="12" >-->
+<!--                <v-sheet  class="text-left" ><span class="text-body-1 font-weight-bold " >Conclusion(s):</span></v-sheet>-->
+<!--                <v-sheet class="text-body-2 text-justify" >-->
+<!--                  <v-list>-->
+<!--                    <v-list-item v-for="x in detail.conclusion" dense :key="x" v-if="x!=null && ( x.trim() != 'nan')">-->
+<!--                      <v-sheet >-->
+<!--                        <v-list-item-icon><v-icon>mdi-menu-right</v-icon></v-list-item-icon>-->
+
+<!--                        {{$commonfunc.capitalize (x.trim())}}-->
+<!--                      </v-sheet>-->
+
+<!--                    </v-list-item>-->
+<!--                  </v-list>-->
+<!--                  &lt;!&ndash;                  {{Data.conclusion}}&ndash;&gt;-->
+<!--                </v-sheet>-->
+<!--              </v-col>-->
+<!--            </v-row>-->
           </expand-panel>
         </v-card>
       </v-col>
@@ -184,6 +242,15 @@ export default {
   },
   mounted() {
     this.loadData();
+  },
+  computed:{
+    detailed_clean(){
+      if (this.detail == null){
+        return {}
+      }else{
+        return this.detail[0]
+      }
+    }
   },
   methods: {
     loadData() {

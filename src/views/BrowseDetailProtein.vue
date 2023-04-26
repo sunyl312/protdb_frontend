@@ -6,91 +6,141 @@
         <v-card>
           <expand-panel :title-name="this_id">
             <v-row>
-              <v-col cols="6">
-                <detail-page-block>
+              <v-col cols="2">
+                <detail-page-block text-align="left">
                   <template #name>
-                    Uniprot Eetry:
+                    Uniprot Eetry
                   </template>
                   <template #content>
                     {{ detail.Entry_Name }}
                   </template>
                 </detail-page-block>
+              </v-col>
+              <v-col cols="2">
                 <detail-page-block>
                   <template #name>
-                    Protein Names:
+                    Protein Names
                   </template>
                   <template #content>
                     {{ detail.Protein_names }}
                   </template>
                 </detail-page-block>
+              </v-col>
+              <v-col cols="2">
                 <detail-page-block>
                   <template #name>
-                    Gene Name:
+                    Gene Name
                   </template>
                   <template #content>
                     {{ detail.Gene_Names_primary }}
                   </template>
                 </detail-page-block>
+              </v-col>
+              <v-col cols="2">
                 <detail-page-block>
                   <template #name>
-                    Length:
+                    Length
                   </template>
                   <template #content>
                     {{ detail.Length }}
                   </template>
                 </detail-page-block>
+              </v-col>
+              <v-col cols="2">
                 <detail-page-block>
                   <template #name>
-                    Mass:
+                    Mass
                   </template>
                   <template #content>
                     {{ detail.Mass }}
                   </template>
                 </detail-page-block>
               </v-col>
-              <v-col cols="6">
-                <detail-page-block align="start" min-height="250" :outlined="true" rounded="true"
+
+            </v-row>
+            <v-row>
+
+            </v-row>
+            <v-row>
+              <v-col cols="4">
+                <detail-page-block :outlined="true" align="start" min-height="250" rounded="true"
                                    text-align="text-justify">
                   <template #name>
-                    Interacts With:
+                    Interacts With
                   </template>
                   <template #content>
-                    <v-card v-for="item in detail && detail.Interacts_with && detail.Interacts_with.split(/; /).filter(x=> x.length >0) || []"
-                            class="ma-2 pa-2">
-                      {{ item }}
-                    </v-card>
+                    <v-sheet class="overflow-y-auto" outlined :max-height="blockHeight" :min-height="blockHeight" >
+                      <v-sheet
+                          v-for="item in detail && detail.Interacts_with && detail.Interacts_with.split(/; /).filter(x=> x.length >0) || []"
+                          class="ma-2 pa-2">
+                        {{ item }}
+                      </v-sheet>
+                    </v-sheet>
+
                   </template>
                 </detail-page-block>
               </v-col>
-              <v-col cols="6">
+              <v-col cols="4">
                 <detail-page-block :outlined="true" :rounded="true" align="start" left-col="2" min-height="250"
                                    right-col="10" text-align="text-justify">
                   <template #name>
-                    Function:
+                    Function
                   </template>
                   <template #content>
-                    <v-card v-for="item in detail && detail.Function_CC && detail.Function_CC.split(/FUNCTION:/).filter(x=> x.length >0) || []"
-                            class="ma-2 pa-2">
-                      {{ item }}
-                    </v-card>
+                    <v-sheet class="overflow-y-auto" outlined :max-height="blockHeight" :min-height="blockHeight" >
+                    <v-sheet
+                        v-for="item in detail && detail.Function_CC && detail.Function_CC.split(/FUNCTION:/).filter(x=> x.length >0) || []"
+                        class="ma-2 pa-2">
+                      <v-icon>mdi-chevron-right</v-icon>{{ item }}
+                    </v-sheet>
+                    </v-sheet>
                   </template>
                 </detail-page-block>
               </v-col>
-              <v-col cols="6">
+              <v-col cols="4">
                 <detail-page-block :outlined="true" :rounded="true" align="start" left-col="2" min-height="250"
                                    right-col="10" text-align="text-justify">
                   <template #name>
-                    Subunit Structure:
+                    Subunit Structure
                   </template>
                   <template #content>
-                    <v-card v-for="item in detail && detail.Subunit_structure && detail.Subunit_structure.split(/SUBUNIT:/).filter(x=> x.length >0) || []"
-                            class="ma-2 pa-2">
-                      {{ item }}
-                    </v-card>
+                    <v-sheet class="overflow-y-auto" outlined :max-height="blockHeight" :min-height="blockHeight" >
+                    <v-sheet
+                        v-for="item in detail && detail.Subunit_structure && detail.Subunit_structure.split(/SUBUNIT:/).filter(x=> x.length >0) || []"
+                        class="ma-2 pa-2">
+                      <v-icon>mdi-chevron-right</v-icon> {{ item }}
+                    </v-sheet>
+                    </v-sheet>
                   </template>
                 </detail-page-block>
               </v-col>
             </v-row>
+
+            <v-row>
+              <v-col cols="6">
+                <detail-page-block>
+                  <template #name>
+                    Genome Browser
+                  </template>
+                  <template #content>
+                    <visualize-genome-browser :uniprot_id="this_id" ></visualize-genome-browser>
+                  </template>
+                </detail-page-block>
+
+              </v-col>
+              <v-col cols="6">
+                <detail-page-block>
+                  <template #name>
+                   Aggregated Datasets
+                  </template>
+                  <template #content>
+                    <aggr-dataset-all :protein_id="this_id" ></aggr-dataset-all>
+                  </template>
+                </detail-page-block>
+
+              </v-col>
+            </v-row>
+
             <!--          {{ this.detail }}-->
           </expand-panel>
         </v-card>
@@ -200,16 +250,21 @@ import BrowseStudyTable from "@/components/browseStudyTable";
 import BrowsePublicationTable from "@/components/browsePublicationTable";
 import BrowseTraitTable from "@/components/browseTraitTable";
 import DetailPageBlock from "@/components/detailPageBlock";
+import VisualizeGenomeBrowser from "@/components/visualizeGenomeBrowser";
+import AggrDatasetAll from "@/components/aggrDatasetAll";
 
 export default {
   name: "BrowseDetailProtein",
   components: {
+    AggrDatasetAll,
+    VisualizeGenomeBrowser,
     DetailPageBlock,
     BrowseTraitTable, BrowsePublicationTable, BrowseStudyTable, BrowseProteinTable, ExpandPanel, BreadCrumb
   },
   data() {
     return {
       tabkey: null,
+      blockHeight:150,
       breadcrumbData: [
         {
           text: "protdb",

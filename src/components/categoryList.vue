@@ -90,7 +90,7 @@ export default {
     getColor(term) {
       let term_lower = term.toLowerCase();
       // console.log(term_lower,this.color_map)
-      return (this.color_map != null) && this.color_map[term_lower] || "grey"
+      return (this.color_map != null) && this.color_map[term_lower] || "blue lighten-2"
     },
     switchData(short) {
 

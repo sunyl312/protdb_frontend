@@ -676,7 +676,7 @@ import BrowseTraitTable from "@/components/browseTraitTable";
 import BrowsePublicationTable from "@/components/browsePublicationTable";
 
 export default {
-  name: "browseProtein",
+  name: "browse",
   components: {
     BrowsePublicationTable,
     BrowseTraitTable, BrowseStudyTable, BrowseProteinTable, CategoryList, PercentBarItemsPval, BreadCrumb

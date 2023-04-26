@@ -10,7 +10,10 @@ import DiseaseAll from "@/views/DiseaseAll";
 import TissueAll from "@/views/TissueAll";
 import Statistics from "@/views/Statistics";
 import store from "../store"
-import statistics from "@/views/Statistics";
+import api from '@/views/API'
+import downloads from "@/views/Downloads";
+import knowledgeNetwork from "@/views/knowledgeNetwork";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,6 +26,11 @@ const routes = [
     path: '/browse',
     name: 'browse',
     component: Browse
+  },
+  {
+    path: '/knowledgegraph',
+    name: 'knowledgegraph',
+    component: knowledgeNetwork
   },
   {
     path: '/browse/protein/:protein_id',
@@ -45,6 +53,24 @@ const routes = [
     component: BrowseDetailPublication
   },
   {
+    path: '/tookit/api',
+    name: 'tookit_api',
+    component: api,
+    beforeEnter: (to, from, next) => {
+      store.state.currtab = 6;
+      next();
+    },
+  },
+  {
+    path: '/tookit/downloads',
+    name: 'tookit_downloads',
+    component: downloads,
+    beforeEnter: (to, from, next) => {
+      store.state.currtab = 6;
+      next();
+    },
+  },
+  {
     path: '/statistic',
     name: 'Statistics',
     component: Statistics
@@ -53,8 +79,8 @@ const routes = [
     path: '/disease/all',
     name: 'disease_all',
     component: DiseaseAll,
-    beforeEnter: (to, from,next) => {
-      store.state.currtab=3;
+    beforeEnter: (to, from, next) => {
+      store.state.currtab = 2;
       next();
     },
   },
@@ -62,8 +88,8 @@ const routes = [
     path: '/tissue/all',
     name: 'tissue_all',
     component: TissueAll,
-    beforeEnter: (to, from,next) => {
-      store.state.currtab=4;
+    beforeEnter: (to, from, next) => {
+      store.state.currtab = 3;
       next();
     },
   }

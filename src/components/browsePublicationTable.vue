@@ -2,14 +2,16 @@
 
   <div>
 
-    <expand-panel  :expand_at_start="false" title-name="Help">
+    <expand-panel :expand_at_start="false" title-name="Help">
       <template #title>
-        <v-icon small :color="$store.state.mainColor" >mdi-heart</v-icon>  Help
+        <v-icon :color="$store.state.mainColor" small>mdi-heart</v-icon>
+        Help
       </template>
-      <v-sheet outlined rounded class=" px-3 py-6">
+      <v-sheet class=" px-3 py-6" outlined rounded>
         <legend-pval-summary></legend-pval-summary>
-        <legend-category-cards name="Biomarker Category" :color-map="$store.state.chipColors.biomarker_category" ></legend-category-cards>
-        <legend-category-cards name="Quality" :color-map="$store.state.chipColors.quality" ></legend-category-cards>
+        <legend-category-cards :color-map="$store.state.chipColors.biomarker_category"
+                               name="Biomarker Category"></legend-category-cards>
+        <legend-category-cards :color-map="$store.state.chipColors.quality" name="Quality"></legend-category-cards>
         <legend-hint-hidden-table-columns></legend-hint-hidden-table-columns>
       </v-sheet>
     </expand-panel>
@@ -30,28 +32,34 @@
       <vxe-column resizable type="expand" width="50">
         <template #content="{ row, rowIndex }">
 
-          <v-sheet class="mx-4 my-2">
-            <b>Abstract</b><br/>
-            <v-sheet class="text-justify">
-              {{ row.Abstract }}
-            </v-sheet>
+          <v-sheet class="pa-3" color="blue lighten-4">
+            <v-sheet class="ma-3 pa-3" elevation="1" rounded>
 
+
+              <v-sheet class="mx-4 my-2">
+                <b>Abstract</b><br/>
+                <v-sheet class="text-justify">
+                  {{ row.Abstract }}
+                </v-sheet>
+
+              </v-sheet>
+            </v-sheet>
           </v-sheet>
 
         </template>
       </vxe-column>
       <vxe-column field="Title" resizable title="Title" width="450px">
         <template #default="{row}">
-        <a class="font-weight-bold"
-           @click="$commonfunc.openDetailAtNewPage(row.PMID,'browse/publication')">{{
-            row.Title
-          }}</a>
+          <a class="font-weight-bold"
+             @click="$commonfunc.openDetailAtNewPage(row.PMID,'browse/publication')">{{
+              row.Title
+            }}</a>
         </template>
       </vxe-column>
       <vxe-column field="Nstudy" resizable title="#Study" width="80px"></vxe-column>
       <vxe-column field="Nsubject" resizable title="#Subject" width="100px">
         <template #default="{row}">
-          {{row.Nsubject == 0 ? 'NA' : row.Nsubject}}
+          {{ row.Nsubject == 0 ? 'NA' : row.Nsubject }}
         </template>
       </vxe-column>
       <vxe-column field="Biomarker_category" resizable title="Biomarker Category" width="180px">
@@ -110,12 +118,14 @@ import ExpandPanel from "@/components/expandPanel";
 import LegendCategoryCards from "@/components/helper/LegendCategoryCards";
 import LegendHintHiddenTableColumns from "@/components/helper/LegendHintHiddenTableColumns";
 import LegendPvalSummary from "@/components/helper/LegendPvalSummary";
+
 export default {
   components: {
     LegendPvalSummary,
-    LegendHintHiddenTableColumns, LegendCategoryCards, ExpandPanel, CategoryList, PercentBarItemsPval},
+    LegendHintHiddenTableColumns, LegendCategoryCards, ExpandPanel, CategoryList, PercentBarItemsPval
+  },
   name: "browsePublicationTable",
-  props:['publication']
+  props: ['publication']
 }
 </script>
 
