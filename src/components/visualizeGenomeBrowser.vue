@@ -1,6 +1,6 @@
 <template>
-  <div :id="this_id">
-    <div id="aaa" ref="aaa" style="height: 500px"></div>
+  <div :id="this_id" style="height: 400px">
+    <div id="aaa" ref="aaa" ></div>
   </div>
 
 </template>
@@ -43,6 +43,7 @@ export default {
   },
   methods: {
     loadCoordinate(){
+      console.log("genome brower")
       Axios.post(
           baseURL+"/api/get_coordinate",
           {},
@@ -65,7 +66,6 @@ export default {
       })
     },
     loadBrowser() {
-
       /*
       * 如何引入例如 Biodalliance.js这种外部的非ES6，且不在npm中发布的js包？
       * 直接通过index.html全局引入即可。

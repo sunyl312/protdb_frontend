@@ -12,9 +12,8 @@
                 <v-card-subtitle class="font-weight-bold">
                   3D mol
                 </v-card-subtitle>
-                <v-card-text>
-<!--                  <component   src="https://3Dmol.org/build/3Dmol-min.js" async ></component>-->
-                  <div style="height: 400px; width: 400px; position: relative;" class='viewer_3Dmoljs' data-pdb='2POR' data-backgroundcolor='0xffffff' data-style='stick' ></div>
+                <v-card-text  class="d-flex justify-center">
+                <visualize3-dmol></visualize3-dmol>
                 </v-card-text>
               </v-card>
             </v-col>
@@ -105,9 +104,10 @@ import AggrDatasetPlot from "@/components/aggrDatasetPlot";
 import commonfunc from "@/plugins/commonfunc";
 import TopProteinBy from "@/components/topProteinBy";
 import VisualizeGenomeBrowser from "@/components/visualizeGenomeBrowser";
+import Visualize3Dmol from "@/components/visualize3Dmol";
 export default {
   name: "Statistics",
-  components: {VisualizeGenomeBrowser, TopProteinBy, AggrDatasetPlot, CommonEcharts, BreadCrumb},
+  components: {Visualize3Dmol, VisualizeGenomeBrowser, TopProteinBy, AggrDatasetPlot, CommonEcharts, BreadCrumb},
   data() {
     return {
       tab: 0,
@@ -128,6 +128,7 @@ export default {
   },
   mounted() {
     this.loadData();
+
   },
   computed: {
     chartOptionPubTimeLine() {

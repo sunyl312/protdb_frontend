@@ -5,10 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    dbname:'protdb',
     mainColor3:"#75D67D",
     mainColor2:"#A5D6A7",
     mainColor4:"#2E7D32",
     mainColor:"#42A5F5",
+    enrichtab:0,
     currtab:0,
     chipColors:{
       quality:{

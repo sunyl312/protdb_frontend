@@ -69,7 +69,7 @@
                     Interacts With
                   </template>
                   <template #content>
-                    <v-sheet class="overflow-y-auto" outlined :max-height="blockHeight" :min-height="blockHeight" >
+                    <v-sheet :max-height="blockHeight" :min-height="blockHeight" class="overflow-y-auto" outlined>
                       <v-sheet
                           v-for="item in detail && detail.Interacts_with && detail.Interacts_with.split(/; /).filter(x=> x.length >0) || []"
                           class="ma-2 pa-2">
@@ -80,6 +80,8 @@
                   </template>
                 </detail-page-block>
               </v-col>
+
+
               <v-col cols="4">
                 <detail-page-block :outlined="true" :rounded="true" align="start" left-col="2" min-height="250"
                                    right-col="10" text-align="text-justify">
@@ -87,12 +89,13 @@
                     Function
                   </template>
                   <template #content>
-                    <v-sheet class="overflow-y-auto" outlined :max-height="blockHeight" :min-height="blockHeight" >
-                    <v-sheet
-                        v-for="item in detail && detail.Function_CC && detail.Function_CC.split(/FUNCTION:/).filter(x=> x.length >0) || []"
-                        class="ma-2 pa-2">
-                      <v-icon>mdi-chevron-right</v-icon>{{ item }}
-                    </v-sheet>
+                    <v-sheet :max-height="blockHeight" :min-height="blockHeight" class="overflow-y-auto" outlined>
+                      <v-sheet
+                          v-for="item in detail && detail.Function_CC && detail.Function_CC.split(/FUNCTION:/).filter(x=> x.length >0) || []"
+                          class="ma-2 pa-2">
+                        <v-icon>mdi-chevron-right</v-icon>
+                        {{ item }}
+                      </v-sheet>
                     </v-sheet>
                   </template>
                 </detail-page-block>
@@ -104,37 +107,62 @@
                     Subunit Structure
                   </template>
                   <template #content>
-                    <v-sheet class="overflow-y-auto" outlined :max-height="blockHeight" :min-height="blockHeight" >
-                    <v-sheet
-                        v-for="item in detail && detail.Subunit_structure && detail.Subunit_structure.split(/SUBUNIT:/).filter(x=> x.length >0) || []"
-                        class="ma-2 pa-2">
-                      <v-icon>mdi-chevron-right</v-icon> {{ item }}
+                    <v-sheet :max-height="blockHeight" :min-height="blockHeight" class="overflow-y-auto" outlined>
+                      <v-sheet
+                          v-for="item in detail && detail.Subunit_structure && detail.Subunit_structure.split(/SUBUNIT:/).filter(x=> x.length >0) || []"
+                          class="ma-2 pa-2">
+                        <v-icon>mdi-chevron-right</v-icon>
+                        {{ item }}
+                      </v-sheet>
                     </v-sheet>
-                    </v-sheet>
+
                   </template>
                 </detail-page-block>
               </v-col>
             </v-row>
 
             <v-row>
+
+
               <v-col cols="6">
-                <detail-page-block>
+                <detail-page-block :outlined="true" :rounded="true" align="start" left-col="2" min-height="250"
+                                   right-col="10" text-align="text-justify">
                   <template #name>
-                    Genome Browser
+                    Visualization
                   </template>
                   <template #content>
-                    <visualize-genome-browser :uniprot_id="this_id" ></visualize-genome-browser>
+                    <v-sheet class="overflow-y-auto pa-3" outlined >
+                      <v-tabs v-model="vis_tab">
+                        <v-tab style="text-transform: none">Genome Browser</v-tab>
+                        <v-tab style="text-transform: none">3D Structure</v-tab>
+                      </v-tabs>
+                      <v-tabs-items v-model="vis_tab">
+                        <v-tab-item>
+                          <v-sheet>
+                            <visualize-genome-browser :uniprot_id="this_id"></visualize-genome-browser>
+                          </v-sheet>
+
+                        </v-tab-item>
+                        <v-tab-item>
+                          <v-sheet>
+                            <visualize3-dmol :uniprot_id="this_id"></visualize3-dmol>
+                          </v-sheet>
+
+                        </v-tab-item>
+                      </v-tabs-items>
+                    </v-sheet>
                   </template>
                 </detail-page-block>
-
               </v-col>
+
+
               <v-col cols="6">
                 <detail-page-block>
                   <template #name>
-                   Aggregated Datasets
+                    Aggregated Datasets
                   </template>
                   <template #content>
-                    <aggr-dataset-all :protein_id="this_id" ></aggr-dataset-all>
+                    <aggr-dataset-all :protein_id="this_id"></aggr-dataset-all>
                   </template>
                 </detail-page-block>
 
@@ -252,10 +280,12 @@ import BrowseTraitTable from "@/components/browseTraitTable";
 import DetailPageBlock from "@/components/detailPageBlock";
 import VisualizeGenomeBrowser from "@/components/visualizeGenomeBrowser";
 import AggrDatasetAll from "@/components/aggrDatasetAll";
+import Visualize3Dmol from "@/components/visualize3Dmol";
 
 export default {
   name: "BrowseDetailProtein",
   components: {
+    Visualize3Dmol,
     AggrDatasetAll,
     VisualizeGenomeBrowser,
     DetailPageBlock,
@@ -263,8 +293,9 @@ export default {
   },
   data() {
     return {
+      vis_tab: 0,
       tabkey: null,
-      blockHeight:150,
+      blockHeight: 150,
       breadcrumbData: [
         {
           text: "protdb",

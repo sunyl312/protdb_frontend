@@ -12,7 +12,8 @@ import commonfunc from "./plugins/commonfunc";
 // import enUS from 'vxe-table/lib/locale/lang/en-US'
 import echarts from './plugins/echarts'
 // import _ from 'lodash'
-
+import VueClipboard from "vue-clipboard2";
+Vue.use(VueClipboard);
 VXETable.setup({
   // 对组件内置的提示语进行国际化翻译
   i18n: (key, args) => i18n.t(key, args)

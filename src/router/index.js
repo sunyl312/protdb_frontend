@@ -13,7 +13,8 @@ import store from "../store"
 import api from '@/views/API'
 import downloads from "@/views/Downloads";
 import knowledgeNetwork from "@/views/knowledgeNetwork";
-
+import toolsEnrichment from "@/views/ToolsEnrichment";
+import toolsBatchAnnotation from "@/views/ToolsBatchAnnotation";
 Vue.use(VueRouter)
 
 const routes = [
@@ -56,6 +57,24 @@ const routes = [
     path: '/tookit/api',
     name: 'tookit_api',
     component: api,
+    beforeEnter: (to, from, next) => {
+      store.state.currtab = 6;
+      next();
+    },
+  },
+  {
+    path: '/tookit/enrichment',
+    name: 'tookit_enrichment',
+    component: toolsEnrichment,
+    beforeEnter: (to, from, next) => {
+      store.state.currtab = 6;
+      next();
+    },
+  },
+  {
+    path: '/tookit/batchanno',
+    name: 'tookit_batchannotation',
+    component: toolsBatchAnnotation,
     beforeEnter: (to, from, next) => {
       store.state.currtab = 6;
       next();

@@ -1,5 +1,5 @@
 <template>
-  <div  :id="chartid" ref="echart" :style="{width:'100%',height: chartHeight+'px'}"></div>
+  <div  :id="chartid" ref="echart" :style="{width:chartWidth,height: chartHeight+'px'}"></div>
 </template>
 
 <script>
@@ -14,8 +14,12 @@ export default {
       }
     },
     chartHeight:{
-      type:Number,
-      default: 500
+      type:String,
+      default: "500"
+    },
+    chartWidth:{
+      type:String,
+      default: '800px'
     },
     // clickFun:{
     //   default:null,

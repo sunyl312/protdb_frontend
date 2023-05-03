@@ -18,7 +18,10 @@ export default {
       },
       selectedValue:{
           default:"P10643"
-      }
+      },
+    redraw:{
+        type:Number,
+    }
   },
   data() {
     return {
@@ -68,7 +71,11 @@ export default {
       }else if (this.selectedType == 'tissue'){
         this.tissue_id = newval;
       }
+      // this.loadData();
+    },
+    redraw(){
       this.loadData();
+      this.drawPlot();
     }
   },
   methods: {

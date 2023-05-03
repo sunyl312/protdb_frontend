@@ -102,7 +102,7 @@
                       v-bind="attrs"
                       width="100%"
                       v-on="on"
-                      :style="{color:$store.state.currtab == 2 ? $store.state.mainColor : 'black' }"
+                      :style="{color:$store.state.currtab == 2 ?'black' : 'black' }"
                   >
                     <v-icon>mdi-liquid-spot</v-icon>
                     Disease
@@ -153,7 +153,7 @@
                       v-bind="attrs"
                       width="100%"
                       v-on="on"
-                      :style="{color:$store.state.currtab == 3 ? $store.state.mainColor : 'black' }"
+                      :style="{color:$store.state.currtab == 3 ? 'black' : 'black' }"
                   >
                     <v-icon>mdi-human-male-male</v-icon>
                     Tissue
@@ -232,7 +232,7 @@
                       v-bind="attrs"
                       width="100%"
                       v-on="on"
-                      :style="{color:$store.state.currtab == 6 ? $store.state.mainColor : 'black' }"
+                      :style="{color:$store.state.currtab == 6 ? 'black' : 'black' }"
 
                   >
                     <v-icon>mdi-hammer</v-icon>
@@ -246,7 +246,7 @@
                 >
 
                   <v-list-item
-                      to="/browse_trait"
+                      to="/tookit/enrichment"
                   >
                     <v-list-item-title>
                       <v-icon>mdi-star-four-points</v-icon>
@@ -255,7 +255,7 @@
                   </v-list-item>
                   <v-list-item
 
-                      to="/browse_study"
+                      to="/tookit/batchanno"
                   >
                     <v-list-item-title>
                       <v-icon>mdi-opacity</v-icon>
