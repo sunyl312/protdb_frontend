@@ -24,3 +24,24 @@ The Browse is divided into Protein, Trait, Study, Publication dimensions. Each d
 
 ### Protein detail page
 ![avatar](./pic/protein-detail.png)
+
+## Trait
+### Trait summary page
+![avatar](./pic/trait-sumarry.png)
+
+### Trait detail page
+![avatar](./pic/trait-detail.png)
+
+## Study
+### Study summary page
+![avatar](./pic/study-sumarry.png)
+
+### Study detail page
+![avatar](./pic/study-detail.png)
+
+## Publication
+### Publication summary page
+![avatar](./pic/publication-sumarry.png)
+
+### Publication detail page
+![avatar](./pic/publication-detail.png)
